@@ -1,38 +1,46 @@
 module.exports = {
   development: {
-    client: 'sqlite3',
-    connection: {
-      filename: './data/auth.db3'
+    client: 'pg',
+    connection: 'postgresql://localhost/postgres',
+    pool: {
+      min: 2,
+      max: 10
     },
-    useNullAsDefault: true,
     migrations: {
       directory: "./data/migrations",
-      tableName: 'dbmigrations',
+      tableName: 'dbmigrations'
     },
     seeds: {
       directory: "./data/seeds",
     },
   },
   // db connection for testing
-  testing: {
-    client: "sqlite3",
-    connection: {
-      filename: "./data/tests.db3",
+  testing: { 
+    client: 'pg',
+    connection: 'postgresql://localhost/staging',
+    pool: {
+      min: 2,
+      max: 10
     },
-    useNullAsDefault: true,
     migrations: {
-      directory: "./data/migrations",
+      directory: './data/migrations',
+      tableName: 'dbmigrations'
     },
     seeds: {
       directory: "./data/seeds",
     },
   },
-  // Heroku will look for a 'production' configuration
+  // Heroku
   production: {
-    client: 'pg',  // npm i pg
-    connection: process.env.DATABASE_URL, // provided by heroku
+    client: 'pg',  
+    connection: process.env.DATABASE_URL, 
+    pool: {
+      min: 2,
+      max: 10
+    },
     migrations: {
       directory: "./data/migrations",
+      tableName: 'dbmigrations'
     },
     seeds: {
       directory: "./data/seeds",
