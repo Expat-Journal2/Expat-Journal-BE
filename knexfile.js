@@ -1,13 +1,14 @@
 module.exports = {
   development: {
-    client: 'sqlite3',
-    connection: {
-      filename: './data/auth.db3'
+    client: 'pg',
+    connection: 'postgresql://localhost/postgres',
+    pool: {
+      min: 2,
+      max: 10
     },
-    useNullAsDefault: true,
     migrations: {
       directory: "./data/migrations",
-      tableName: 'dbmigrations',
+      tableName: 'dbmigrations'
     },
     seeds: {
       directory: "./data/seeds",
@@ -15,13 +16,15 @@ module.exports = {
   },
   // db connection for testing
   testing: { 
-    client: "sqlite3",
-    connection: {
-      filename: "./data/tests.db3",
+    client: 'pg',
+    connection: 'postgresql://localhost/staging',
+    pool: {
+      min: 2,
+      max: 10
     },
-    useNullAsDefault: true,
     migrations: {
-      directory: "./data/migrations",
+      directory: './data/migrations',
+      tableName: 'dbmigrations'
     },
     seeds: {
       directory: "./data/seeds",
@@ -31,8 +34,13 @@ module.exports = {
   production: {
     client: 'pg',  
     connection: process.env.DATABASE_URL, 
+    pool: {
+      min: 2,
+      max: 10
+    },
     migrations: {
       directory: "./data/migrations",
+      tableName: 'dbmigrations'
     },
     seeds: {
       directory: "./data/seeds",
