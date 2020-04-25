@@ -14,7 +14,7 @@ server.use(express.json());
 server.use('/api/auth', authRouter);
 
 server.get('/', (req, res) => {
-    res.send('<h2>Expat Journal: Backend</h2>');
+    res.send('<h4>Expat Journal: Backend</h4>');
 });
 
 module.exports = server;
