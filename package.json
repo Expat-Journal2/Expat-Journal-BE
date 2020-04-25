@@ -5,7 +5,8 @@
   "description": "Expat Journal - Backend",
   "scripts": {
     "server": "nodemon",
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "jest --watch"
   },
   "repository": "https://github.com/Expat-Journal2/Expat-Journal-BE.git",
   "author": "Devanee Reid <devaneereid@gmail.com>",
@@ -26,5 +27,8 @@
   "devDependencies": {
     "jest": "^25.4.0",
     "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
