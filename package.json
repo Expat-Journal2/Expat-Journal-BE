@@ -8,7 +8,11 @@
     "start": "node index.js",
     "test": "jest --watch"
   },
-  "repository": "https://github.com/Expat-Journal2/Expat-Journal-BE.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Expat-Journal2/Expat-Journal-BE.git"
+  },
+  "keywords": [],
   "author": "Devanee Reid <devaneereid@gmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -20,7 +24,6 @@
     "install": "^0.13.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.0",
-    "node": "^14.0.0",
     "pg": "^8.0.3",
     "sqlite3": "^4.1.1"
   },
