@@ -1,12 +1,15 @@
 {
-  "name": "^(?:@[a-z0-9-*~][a-z0-9-*._~]*/)?[a-z0-9-~][a-z0-9-._~]*$",
+  "name": "Expat-Journal-BE",
   "version": "1.0.0",
-  "description": "Expat Journal - Backend",
   "main": "index.js",
+  "description": "Expat Journal - Backend",
+  "scripts": {
+    "server": "nodemon",
+    "start": "node index.js"
+  },
   "repository": "https://github.com/Expat-Journal2/Expat-Journal-BE.git",
   "author": "Devanee Reid <devaneereid@gmail.com>",
   "license": "MIT",
-  "private": false,
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cross-env": "^7.0.2",
@@ -16,6 +19,8 @@
     "install": "^0.13.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.0",
+    "node": "^14.0.0",
+    "nodemon": "^2.0.3",
     "sqlite3": "^4.1.1"
   },
   "devDependencies": {
