@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const secrets = require('../api/secrets.js');
 
-const Users = require('./auth-model.js');
+const Users = require('../users/user-model.js');
 
 // POST - Register New User
 router.post('/register', (req, res) => {
@@ -18,7 +18,8 @@ router.post('/register', (req, res) => {
             res.status(201).json(saved);
         })
         .catch(error => {
-            res.status(500).json({ errorMessage: error.message });
+            console.log(error)
+            res.status(500).json({ error: 'unable to add user' });
         });
 });
 
