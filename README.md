@@ -10,8 +10,8 @@
 
 ```
     {
-        "fullname": "User Test",
-        "username": "user2",
+        "fullname": "New User",
+        "username": "newuser",
         "password": "password"
     }
 ```
@@ -20,9 +20,9 @@
 
 ```
     {
-        "id": 2,
+        "id": 7,
         "fullname": "User Test",
-        "username": "user2",
+        "username": "newuser",
         "password": "$2a$08$1I.ovnZaVLXeiu04U/KNDuapXRn8TfMnLyiFKp17V4eYBkvetpjJa"
     }
 ```
@@ -32,7 +32,7 @@
 
 ```
     {
-        "username": "user2",
+        "username": "newuser",
         "password": "password"
     }
 ```
