@@ -18,6 +18,6 @@ server.use('/api/blogs', authenticate, blogRouter);
 server.use('/api/users', authenticate, userRouter);
 
 server.get('/', (req, res) => {
-    res.send('<h4>Expat Journal: Backend</h4>');
+    res.status(200).json({ message: 'Expat Journal - Backend' });
 });
 module.exports = server;

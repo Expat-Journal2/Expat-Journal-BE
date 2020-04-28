@@ -32,7 +32,7 @@ router.post('/login', (req, res) => {
             if (user && bcrypt.compareSync(password, user.password)) {
                 const token = generateToken(user);
 
-                res.status(200).json({ fullname: `Welcome ${user.fullname}!`, username: `${user.username}`, userId: `${user.id}`, token });
+                res.status(200).json({ fullname: `${user.fullname}`, username: `${user.username}`, userId: `${user.id}`, token });
             } else {
                 res.status(401).json({ message: 'Please enter your login credentials' });
             }
@@ -52,7 +52,7 @@ function generateToken(user) {
 
     const secret = secrets.jwtSecret;
     const options = {
-        expiresIn: '1d'
+        expiresIn: '10d'
     };
 
     return jwt.sign(payload, secret, options);
