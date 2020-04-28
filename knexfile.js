@@ -17,7 +17,7 @@ module.exports = {
   // db connection for testing
   testing: { 
     client: 'pg',
-    connection: 'postgresql://localhost/staging',
+    connection: './data/tests.db3',
     pool: {
       min: 2,
       max: 10
