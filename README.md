@@ -69,7 +69,7 @@
         "id": 3,
         "title": "TEST",
         "textbox": "TESSTTT ",
-        "created_at": "2020-04-26",
+        "created_at": "Apr 26 2020",
         "img": "https://images.unsplash.com/photo-1473625247510-8ceb1760943f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
         "user_id": 1
     }
