@@ -35,7 +35,7 @@ describe('server', () => {
     describe('/api/auth/login', () => {
        function login(done) {
             it('it should login newuser', (done) => {
-                request(server)
+                return request(server)
                     .post('/api/auth/login')
                     .send({
                         username: 'newuser',
@@ -45,7 +45,6 @@ describe('server', () => {
                         let token = res.body.token; 
             });
     };
-
 
         it('should return a 500 status', () => {
             return request(server)
