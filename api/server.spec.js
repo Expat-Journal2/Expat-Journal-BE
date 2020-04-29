@@ -6,6 +6,11 @@ describe('server', () => {
         expect(true).toBeTruthy();
     });
 
+    describe('test environment', () => {
+        it('should use test environment', () => {
+            expect(process.env.DB_ENV).toBe('testing')
+        });
+    });
 
     describe('GET /', () => {
         it('should return a 200 OK ', () => {
@@ -16,7 +21,6 @@ describe('server', () => {
             });
         });
 
-
         it('should return message: Expat Journal - Backend', () => {
             return request(server)
                 .get('/')
@@ -25,5 +29,5 @@ describe('server', () => {
             });
         });
     });
-    
+
 });
