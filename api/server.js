@@ -20,5 +20,4 @@ server.use('/api/users', authenticate, userRouter);
 server.get('/', (req, res) => {
     res.send('<h4>Expat Journal: Backend</h4>');
 });
-
 module.exports = server;
