@@ -1,27 +1,27 @@
 # Expat-Journal: Backend
-### Pitch
+## Pitch
 ```
 ```
  As an expat, I want to be able to show off the places I've been and remember them for myself. I have a lot of amazing pics and stories from around the world I'd like to share, but I need a site that is more personal than Instagram in order to do so.
 
 **Product Proposal**
 ```
-    What problem does your app solve?
+What problem does your app solve?
 ```
 > - Expats need a page to post their travel pictures, users should be able to view multiple photos and post stories about their travels.
 ```
 
-    What is the mission statement?
+What is the mission statement?
 ```
 > - To create a seamless web app where expats can share their experiences.
 
 **Features**
 ```
-    What features are required for your minimum viable product?
+What features are required for your minimum viable product?
 ```
-> - 1: Users can register and login with their new account
-> - 2: Users can create, read, upload, and delete photos and stories/blogs
-> - 3: Users have the ability to view other peoples blogs
+> - 1. Users can register and login with their new account
+> - 2. Users can create, read, upload, and delete photos and stories/blogs
+> - 3. Users have the ability to view other peoples blogs
 
 
 ### ENDPOINTS
