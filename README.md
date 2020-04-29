@@ -11,9 +11,11 @@ As an expat, I want to be able to show off the places I've been and remember the
 
 **Features**
 > - What features are required for your minimum viable product?
-   *- 1:*  Users can register and login with their new account
-   *- 2:* Users can create, read, upload, and delete photos and stories/blogs
-   *- 3:* Users have the ability to view other peoples blogs
+```
+   1: Users can register and login with their new account
+   2: Users can create, read, upload, and delete photos and stories/blogs
+   3: Users have the ability to view other peoples blogs
+```
 
 ### ENDPOINTS
 
