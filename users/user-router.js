@@ -156,5 +156,4 @@ function validateUserId(req, res, next) {
     });
 }; 
 
-
 module.exports = router;

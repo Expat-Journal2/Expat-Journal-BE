@@ -105,7 +105,6 @@ describe('server', () => {
                          username: 'newuser',
                          password: 'password'
                      })
-                    //  let token = res.body.token; 
                      .delete('/api/users/2/blogs/4')
                      .expect(200).end(response(done));
                      function response(error, res) {
