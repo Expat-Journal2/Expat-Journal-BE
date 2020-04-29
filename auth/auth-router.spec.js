@@ -44,18 +44,6 @@ describe('server', () => {
                     .expect(200).end(token(done));
                         let token = res.body.token; 
             });
-    };
-
-        it('should return a 500 status', () => {
-            return request(server)
-                .post('/api/auth/login')
-                .send({ 
-                    username: 'name',
-                    password: 'password'
-                })
-                .then(res => {
-                    expect(res.status).toBe(500);
-            });
-        });
+        };
     });
 });
