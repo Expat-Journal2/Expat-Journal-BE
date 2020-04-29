@@ -46,4 +46,16 @@ describe('server', () => {
             });
         };
     });
+
+     // it('should return a 401 status', () => {
+        //     return request(server)
+        //         .post('/api/auth/login')
+        //         .send({ 
+        //             username: 'name',
+        //             password: 'password'
+        //         })
+        //         .then(res => {
+        //             expect(res.status).toBe(401);
+        //     });
+        // });
 });

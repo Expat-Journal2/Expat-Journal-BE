@@ -6,6 +6,7 @@ describe('server', () => {
         expect(true).toBeTruthy();
     });
 
+
     describe('GET /', () => {
         it('should return a 200 OK ', () => {
             return request(server)
@@ -15,6 +16,7 @@ describe('server', () => {
             });
         });
 
+
         it('should return message: Expat Journal - Backend', () => {
             return request(server)
                 .get('/')
@@ -23,4 +25,5 @@ describe('server', () => {
             });
         });
     });
+    
 });
