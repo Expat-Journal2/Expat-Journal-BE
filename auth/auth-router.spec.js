@@ -6,6 +6,12 @@ describe('server', () => {
         expect(true).toBeTruthy();
     });
 
+    describe('test environment', () => {
+        it('should use test environment', () => {
+            expect(process.env.DB_ENV).toBe('testing')
+        });
+    });
+
     // REGISTER ENDPOINTS - Tests
     describe('/api/auth/register', () => {
         describe('create new user', () => {
@@ -47,15 +53,15 @@ describe('server', () => {
         };
     });
 
-     // it('should return a 401 status', () => {
-        //     return request(server)
-        //         .post('/api/auth/login')
-        //         .send({ 
-        //             username: 'name',
-        //             password: 'password'
-        //         })
-        //         .then(res => {
-        //             expect(res.status).toBe(401);
-        //     });
-        // });
+     it('should return a 401 status', () => {
+            return request(server)
+                .post('/api/auth/login')
+                .send({ 
+                    username: 'name',
+                    password: 'password'
+                })
+                .then(res => {
+                    expect(res.status).toBe(401);
+            });
+        });
 });

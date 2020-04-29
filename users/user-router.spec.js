@@ -7,6 +7,10 @@ const Blogs = require('../blogs/blog-model.js');
 
 
 describe('server', () => {
+    it('should run all tests without errors', () => {
+        expect(true).toBeTruthy();
+    });
+
     describe('test environment', () => {
         it('should use test environment', () => {
             expect(process.env.DB_ENV).toBe('testing')
@@ -17,7 +21,7 @@ describe('server', () => {
         it('should return a JSON Object', async () => {
             const response = await request(server).get('/')
                 expect(response.type).toEqual('application/json')
-        })
+        });
     });
 
     describe('PUT /', () => {
@@ -65,27 +69,28 @@ describe('server', () => {
                 });
             });
         });
-
-
-
-        describe('/GET ', () => {
-            let token = {};
-            it('should return all users', (done) => {
-            return request(server)
-                    .post('/api/auth/login')
-                    .send({
-                        username: 'newuser',
-                        password: 'password'
-                    })
-                    .expect(200)
-                    .end(response);
-                        function response(error, res) {
-                            token = res.body.token;
-                            return done();
-                        }
+        
+        describe('/api/users', () => {
+            it('should return a JSON Object', async () => {
+                const response = await request(server).get('/')
+                    expect(response.type).toEqual('application/json')
+            });
+    
+            it('GET Request /api/users', () => {
+                beforeAll((done) => {
+                    request(server)
+                        .post('/api/auth/login')
+                        .send({ 
+                            username: 'newuser',
+                            password: 'password'
+                        })
+                        .get('/api/users', token)
+                        .expect(200).end(token(done));
+                            let token = res.body.token;
+                });
             });
 
-            it('user blogs should require authorization', () => {
+            it('should return a 401, wrong authorization', () => {
                 return request(server)
                     .get('/api/users/blogs')
                     .set('Authorization', '2a08wuxseCUslsLFxJH.LLgn8uvzlGjSr0btsMkoz1zriQjBeGRLsLsm')
@@ -95,7 +100,6 @@ describe('server', () => {
             });
         });
 
-    //  ** UNCOMMENT to test - I've set it to delete a blog
     describe('delete', () => {
         function login(done) {
              it('it should login newuser', () => {
