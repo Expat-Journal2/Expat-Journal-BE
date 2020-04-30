@@ -111,28 +111,9 @@ describe('server', () => {
                     expect(res.status).toBe(400);
             });
         });
-
-        // it('should create new post', async () => {
-        //     request(server)
-        //         .post('/api/auth/login')
-        //         .send({
-        //             username: 'newuser',
-        //             password: 'password'
-        //         })
-        //     const body = {
-        //         title: "new post",
-        //         textbox: "new post text",
-        //         created_at: "Apr 30 2020"
-        //     }
-        //     const id = 2;
-        //     const res = await Blogs.addBlog(request(server)
-        //         .post('/api/users/2/blogs/7', id)
-        //         .send(body));
-        //         expect(res.status).toBe(201);
-        //         expect(res.body).toHaveProperty('success', true);
-        // })  
     });
     
+    // DELETE Request
     describe('delete', () => {
         function login(done) {
              it('it should login newuser', () => {

@@ -12,20 +12,20 @@ describe('server', () => {
         });
     });
 
-    // REGISTER ENDPOINTS - Tests  **UNCOMMENT to test, as it needs a unique username
+    // REGISTER ENDPOINTS - Tests  **make sure to add a unique username for test to pass
     describe('/register', () => {
-        // it('should register new user, return a 201', () => {
-        //     return request(server) 
-        //         .post('/api/auth/register')
-        //         .send({
-        //             fullname: 'Devanee Reid',
-        //             username: 'devaneereid',
-        //             password: 'password'
-        //         })
-        //         .then(res => {
-        //             expect(res.status).toBe(201);
-        //     });
-        // });
+        it('should register new user, return a 201', () => {
+            return request(server) 
+                .post('/api/auth/register')
+                .send({
+                    fullname: 'Devanee Reid',
+                    username: 'devanee1',
+                    password: 'password'
+                })
+                .then(res => {
+                    expect(res.status).toBe(201);
+            });
+        });
       
         // testing register error message
         it('returns error 500', () => {

@@ -12,7 +12,7 @@ describe('server', () => {
         });
     });
 
-    // Blogs - check user.spec.js for the other tests of this endpoint
+    // GET Blogs - check user.spec.js for the other tests of this endpoint
     describe('/api/blogs', () => {
         it('should return a JSON Object', async () => {
             const response = await request(server).get('/')
