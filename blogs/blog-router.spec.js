@@ -12,23 +12,18 @@ describe('server', () => {
         });
     });
 
+    // Blogs - check user.spec.js for the other tests of this endpoint
     describe('/api/blogs', () => {
         it('should return a JSON Object', async () => {
             const response = await request(server).get('/')
                 expect(response.type).toEqual('application/json')
         });
 
-        it('GET Request /api/blogs', () => {
-            beforeAll((done) => {
-                request(server)
-                    .post('/api/auth/login')
-                    .send({ 
-                        username: 'newuser',
-                        password: 'password'
-                    })
-                    .get('/api/blogs', token)
-                    .expect(200).end(token(done));
-                        let token = res.body.token;
+        it('returns error 400', () => {
+            return request(server)
+                .get('/api/blogs')
+                .then(res => {
+                    expect(res.status).toBe(400);
             });
         });
     });

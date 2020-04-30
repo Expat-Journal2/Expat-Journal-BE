@@ -17,89 +17,122 @@ describe('server', () => {
         });
     });
 
+    // GET Request - users
     describe('/api/users', () => {
+        it('should return all users', () => {
+            return request(server)
+                .post('/api/auth/login')
+                .send({
+                    username: 'newuser',
+                    password: 'password'
+                })
+                .then(res => {
+                    const token = res.body.token
+                    return request(server)
+                        .get('/api/users')
+                        .set('Authorization', token)
+                        .then(res => {
+                            expect(res.status).toBe(200)
+                    });
+            });
+        });
+
         it('should return a JSON Object', async () => {
             const response = await request(server).get('/')
                 expect(response.type).toEqual('application/json')
         });
     });
 
+    // GET Request - blogs
+    describe('/api/blogs', () => {
+        it('should return all blogs', () => {
+            return request(server)
+                .post('/api/auth/login')
+                .send({
+                    username: 'newuser',
+                    password: 'password'
+                })
+                .then(res => {
+                    const token = res.body.token
+                    return request(server)
+                        .get('/api/blogs')
+                        .set('Authorization', token)
+                        .then(res => {
+                            expect(res.status).toBe(200)
+                    });
+            });
+        });
+
+        describe('/api/blogs', () => {
+            it('should return a JSON Object', async () => {
+                const response = await request(server).get('/')
+                expect(response.type).toEqual('application/json')
+            });
+            
+            it('should return a 401, wrong authorization', () => {
+                return request(server)
+                .get('/api/users/blogs')
+                .set('Authorization', 'token')
+                .then(res => {
+                    expect(res.status).toBe(401);
+                });
+            });
+        });
+    });
+
+    // PUT Request - changes the blog for user 2, just change blogId and title/textbox 
     describe('PUT /', () => {
         const update = {
             title: "test",
             textbox: "test",
             created_at: "Apr 28 2020"
         };
-            const blogs = 1;
-            it('should update user blog', async () => {
-                const res = await Blogs.updateBlog(update, blogs)
-                    .then(updateBlog => {
-                        console.log('new', updateBlog);
-                        expect(200);
-                    });
-            });
+        const blogId = 4;
+        it('should update user blog', async () => {
+            const res = await Blogs.updateBlog(update, blogId)
+                .then(updateBlog => {
+                    console.log('new', updateBlog);
+                    expect(200);
+                });
+        });
     });
 
-        // **  Change user blog id to test so it creates new blog
-        describe('insert()', function () {
-            it('should add the created blog',  () => {
-                return request(server)
-                .post('/api/users/2/blogs/4')
-                .send({
-                    title: "test",
-                    textbox: "test",
-                    created_at: "Apr 28 2020",
-                    user_id: 2
-                })
-                .then(res => {
-                    return request(server)
-                        .post('/api/auth/login')
-                        .send({
-                            username: 'newuser',
-                            password: 'password'
-                        })
-                        .then(res => {
-                            return request(server)
-                            .get('/api/users')
-                            .set('Authorization', res.body.token)
-                            .then(res => {
-                                expect(res.status).toBe(200)
-                        });
-                    });
-                });
-            });
+    // POST Request 
+    describe('POST /', () => {
+        it('should return a JSON Object', async () => {
+            const response = await request(server).get('/api/users/1/blogs/1')
+            expect(response.type).toEqual('application/json')
         });
         
-        describe('/api/users', () => {
-            it('should return a JSON Object', async () => {
-                const response = await request(server).get('/')
-                    expect(response.type).toEqual('application/json')
-            });
-    
-            it('GET Request /api/users', () => {
-                beforeAll((done) => {
-                    request(server)
-                        .post('/api/auth/login')
-                        .send({ 
-                            username: 'newuser',
-                            password: 'password'
-                        })
-                        .get('/api/users', token)
-                        .expect(200).end(token(done));
-                            let token = res.body.token;
-                });
-            });
-
-            it('should return a 401, wrong authorization', () => {
-                return request(server)
-                    .get('/api/users/blogs')
-                    .set('Authorization', '2a08wuxseCUslsLFxJH.LLgn8uvzlGjSr0btsMkoz1zriQjBeGRLsLsm')
-                        .then(res => {
-                            expect(res.status).toBe(401);
-                    });
+        it('should return a 400, wrong authorization', () => {
+            return request(server)
+            .get('/api/users/blogs')
+                .then(res => {
+                    expect(res.status).toBe(400);
             });
         });
 
+        // it('should create new post', async () => {
+        //     request(server)
+        //         .post('/api/auth/login')
+        //         .send({
+        //             username: 'newuser',
+        //             password: 'password'
+        //         })
+        //     const body = {
+        //         title: "new post",
+        //         textbox: "new post text",
+        //         created_at: "Apr 30 2020"
+        //     }
+        //     const id = 2;
+        //     const res = await Blogs.addBlog(request(server)
+        //         .post('/api/users/2/blogs/7', id)
+        //         .send(body));
+        //         expect(res.status).toBe(201);
+        //         expect(res.body).toHaveProperty('success', true);
+        // })  
+    });
+    
     describe('delete', () => {
         function login(done) {
              it('it should login newuser', () => {
@@ -109,7 +142,7 @@ describe('server', () => {
                          username: 'newuser',
                          password: 'password'
                      })
-                     .delete('/api/users/2/blogs/4')
+                     .delete('/api/users/3/blogs/6')
                      .expect(200).end(response(done));
                      function response(error, res) {
                         token = res.body.token;
